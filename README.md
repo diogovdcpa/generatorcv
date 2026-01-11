@@ -1,31 +1,41 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fvercel%2Ftree%2Fmain%2Fexamples%2Fflask&demo-title=Flask%20API&demo-description=Use%20Flask%20API%20on%20Vercel%20with%20Serverless%20Functions%20using%20the%20Python%20Runtime.&demo-url=https%3A%2F%2Fvercel-plus-flask.vercel.app%2F&demo-image=https://assets.vercel.com/image/upload/v1669994600/random/python.png)
+# GeneratorCV ✨
 
-# Flask + Vercel
+GeneratorCV e um gerador de curriculo em Flask que cria um PDF elegante a partir de um formulario simples.
+O usuario comeca em uma landing page, segue para o formulario e faz o download do
+curriculo pronto em segundos. 🚀
 
-This example shows how to use Flask on Vercel with Serverless Functions using the [Python Runtime](https://vercel.com/docs/concepts/functions/serverless-functions/runtimes/python).
+## Destaques 🌟
 
-## Demo
+- Landing page com apresentacao da aplicacao
+- Formulario completo para dados profissionais
+- Geracao de PDF com layout limpo
+- Templates Jinja + Tailwind via CDN
+- Pronto para deploy no Vercel
 
-https://vercel-plus-flask.vercel.app/
+## Stack 🧰
 
-## How it Works
+- Flask
+- Jinja2
+- Tailwind CSS (CDN)
+- ReportLab para PDF
 
-This example uses the Web Server Gateway Interface (WSGI) with Flask to handle requests on Vercel with Serverless Functions.
+## Rotas 🔗
 
-## Running Locally
+- GET `/` landing page
+- GET `/form` formulario de curriculo
+- POST `/generate` gera e baixa o PDF
+
+## Rodar localmente 🧪
 
 ```bash
-npm i -g vercel
 python -m venv .venv
 source .venv/bin/activate
-uv sync  # or alternatively pip install flask gunicorn
-gunicorn main:app
+pip install flask gunicorn reportlab
+flask --app main run
 ```
 
-Your Flask application is now available at `http://localhost:3000`.
+A aplicacao fica disponivel em `http://127.0.0.1:5000`.
 
-## One-Click Deploy
+## Deploy ☁️
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fvercel%2Ftree%2Fmain%2Fexamples%2Fflask&demo-title=Flask%20API&demo-description=Use%20Flask%20API%20on%20Vercel%20with%20Serverless%20Functions%20using%20the%20Python%20Runtime.&demo-url=https%3A%2F%2Fvercel-plus-flask.vercel.app%2F&demo-image=https://assets.vercel.com/image/upload/v1669994600/random/python.png)
+Deploy com Vercel usando a runtime Python. Basta conectar o repositorio e publicar.

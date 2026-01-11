@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+    <div class="reveal" style="animation-delay: 0.05s;">
+      <span class="accent-pill inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--ink-soft)]">
+        Etapa 1 de 1
+      </span>
+      <h1 class="heading-font mt-6 text-4xl font-semibold text-[var(--shade)]">Conte sua historia profissional.</h1>
+      <p class="mt-4 text-base text-[var(--ink-soft)]">
+        Informe seus dados e deixe o GeneratorCV montar um PDF elegante, organizado e pronto para enviar.
+      </p>
+      <div class="mt-8 grid gap-4">
+        <div class="glass rounded-2xl p-5">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--ink-soft)]">Dica</p>
+          <p class="mt-2 text-sm">Use frases curtas e claras. Destaque resultados e projetos que representem seu momento.</p>
+        </div>
+        <div class="glass rounded-2xl p-5">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--ink-soft)]">O que voce recebe</p>
+          <ul class="mt-3 space-y-2 text-sm text-[var(--ink-soft)]">
+            <li>PDF com layout moderno e legivel</li>
+            <li>Resumo, experiencia, educacao e habilidades</li>
+            <li>Download imediato sem cadastro</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <form class="glass reveal rounded-[28px] p-8" style="animation-delay: 0.2s;" action="/generate" method="post">
+      <div class="grid gap-6">
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label class="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--ink-soft)]">Nome completo</label>
+            <input name="full_name" required class="mt-2 w-full rounded-2xl border border-white/80 bg-white/90 px-4 py-3 text-sm shadow-inner shadow-white/50 focus:border-[var(--mint)] focus:outline-none" placeholder="Seu nome" />
+          </div>
+          <div>
+            <label class="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--ink-soft)]">Titulo profissional</label>
+            <input name="title" class="mt-2 w-full rounded-2xl border border-white/80 bg-white/90 px-4 py-3 text-sm shadow-inner shadow-white/50 focus:border-[var(--mint)] focus:outline-none" placeholder="Ex: Engenheira de Software" />
+          </div>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-3">
+          <div>
+            <label class="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--ink-soft)]">Email</label>
+            <input name="email" type="email" class="mt-2 w-full rounded-2xl border border-white/80 bg-white/90 px-4 py-3 text-sm focus:border-[var(--mint)] focus:outline-none" placeholder="seu@email.com" />
+          </div>
+          <div>
+            <label class="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--ink-soft)]">Telefone</label>
+            <input name="phone" class="mt-2 w-full rounded-2xl border border-white/80 bg-white/90 px-4 py-3 text-sm focus:border-[var(--mint)] focus:outline-none" placeholder="(11) 99999-0000" />
+          </div>
+          <div>
+            <label class="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--ink-soft)]">Local</label>
+            <input name="location" class="mt-2 w-full rounded-2xl border border-white/80 bg-white/90 px-4 py-3 text-sm focus:border-[var(--mint)] focus:outline-none" placeholder="Cidade, UF" />
+          </div>
+        </div>
+
+        <div>
+          <label class="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--ink-soft)]">Resumo profissional</label>
+          <textarea name="summary" rows="4" class="mt-2 w-full rounded-2xl border border-white/80 bg-white/90 px-4 py-3 text-sm focus:border-[var(--mint)] focus:outline-none" placeholder="Fale sobre sua experiencia, foco e resultados."></textarea>
+        </div>
+
+        <div>
+          <label class="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--ink-soft)]">Experiencia</label>
+          <textarea name="experience" rows="5" class="mt-2 w-full rounded-2xl border border-white/80 bg-white/90 px-4 py-3 text-sm focus:border-[var(--mint)] focus:outline-none" placeholder="Empresa, cargo, periodo e principais entregas."></textarea>
+        </div>
+
+        <div>
+          <label class="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--ink-soft)]">Educacao</label>
+          <textarea name="education" rows="4" class="mt-2 w-full rounded-2xl border border-white/80 bg-white/90 px-4 py-3 text-sm focus:border-[var(--mint)] focus:outline-none" placeholder="Cursos, formacoes, certificacoes."></textarea>
+        </div>
+
+        <div>
+          <label class="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--ink-soft)]">Habilidades</label>
+          <textarea name="skills" rows="3" class="mt-2 w-full rounded-2xl border border-white/80 bg-white/90 px-4 py-3 text-sm focus:border-[var(--mint)] focus:outline-none" placeholder="Ex: Python, UI/UX, Gestao de projetos."></textarea>
+        </div>
+
+        <button type="submit" class="mt-2 w-full rounded-full bg-[var(--shade)] px-6 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-white shadow-lg shadow-slate-300/60 transition hover:-translate-y-0.5">
+          Gerar PDF do curriculo
+        </button>
+      </div>
+    </form>
+  </section>
+{% endblock %}

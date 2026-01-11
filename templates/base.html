@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ meta_title or title or "GeneratorCV" }}</title>
+  <meta name="description" content="{{ meta_description or "Gerador de curriculo em PDF para recrutadores." }}">
+  <meta name="application-name" content="GeneratorCV">
+  <meta name="author" content="GeneratorCV">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0f172a">
+  {% if canonical_url %}
+  <link rel="canonical" href="{{ canonical_url }}">
+  {% endif %}
+  <meta property="og:title" content="{{ meta_title or title or "GeneratorCV" }}">
+  <meta property="og:description" content="{{ meta_description or "Gerador de curriculo em PDF para recrutadores." }}">
+  <meta property="og:type" content="website">
+  {% if canonical_url %}
+  <meta property="og:url" content="{{ canonical_url }}">
+  {% endif %}
+  <meta property="og:site_name" content="GeneratorCV">
+  <meta property="og:locale" content="pt_BR">
+  {% if meta_image %}
+  <meta property="og:image" content="{{ meta_image }}">
+  {% endif %}
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ meta_title or title or "GeneratorCV" }}">
+  <meta name="twitter:description" content="{{ meta_description or "Gerador de curriculo em PDF para recrutadores." }}">
+  {% if meta_image %}
+  <meta name="twitter:image" content="{{ meta_image }}">
+  {% endif %}
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --sand: #f5f1ea;
+      --peach: #fcd9b8;
+      --sun: #f59e0b;
+      --mint: #22c1a6;
+      --ink: #1f2937;
+      --ink-soft: #374151;
+      --shade: #0f172a;
+      --paper: #ffffff;
+    }
+
+    body {
+      font-family: "Space Grotesk", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 20%, rgba(252, 217, 184, 0.65), transparent 45%),
+        radial-gradient(circle at 85% 25%, rgba(34, 193, 166, 0.2), transparent 40%),
+        linear-gradient(180deg, #fff7ee 0%, #f5f1ea 55%, #eef5f4 100%);
+      min-height: 100vh;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+      background-size: 14px 14px;
+      opacity: 0.35;
+      z-index: 0;
+    }
+
+    main, header {
+      position: relative;
+      z-index: 1;
+    }
+
+    .heading-font {
+      font-family: "Fraunces", serif;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .accent-pill {
+      background: linear-gradient(120deg, rgba(245, 158, 11, 0.2), rgba(34, 193, 166, 0.2));
+      border: 1px solid rgba(245, 158, 11, 0.25);
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      animation: rise 0.8s ease both;
+    }
+  </style>
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="text-[var(--ink)]">
+  <header class="px-6 pt-6">
+    <div class="mx-auto flex w-full max-w-6xl items-center justify-between rounded-3xl border border-white/70 bg-white/70 px-6 py-4 shadow-lg shadow-orange-100/40">
+      <div class="flex items-center gap-3">
+        <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-[var(--shade)] text-white text-lg font-semibold">
+          CV
+        </div>
+        <div>
+          <p class="text-sm uppercase tracking-[0.2em] text-[var(--ink-soft)]">GeneratorCV</p>
+          <p class="heading-font text-lg">Curriculos elegantes</p>
+        </div>
+      </div>
+      <nav class="flex items-center gap-4 text-sm font-medium">
+        <a href="/" class="rounded-full px-4 py-2 text-[var(--ink-soft)] transition hover:bg-white hover:text-[var(--shade)]">Inicio</a>
+        <a href="/form" class="rounded-full bg-[var(--shade)] px-4 py-2 text-white shadow hover:bg-black">Gerar agora</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="px-6 pb-16 pt-10">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
