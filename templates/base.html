@@ -3,7 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ title or "GeneratorCV" }}</title>
+  <title>{{ meta_title or title or "GeneratorCV" }}</title>
+  <meta name="description" content="{{ meta_description or "Gerador de curriculo em PDF para recrutadores." }}">
+  <meta name="application-name" content="GeneratorCV">
+  <meta name="author" content="GeneratorCV">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0f172a">
+  {% if canonical_url %}
+  <link rel="canonical" href="{{ canonical_url }}">
+  {% endif %}
+  <meta property="og:title" content="{{ meta_title or title or "GeneratorCV" }}">
+  <meta property="og:description" content="{{ meta_description or "Gerador de curriculo em PDF para recrutadores." }}">
+  <meta property="og:type" content="website">
+  {% if canonical_url %}
+  <meta property="og:url" content="{{ canonical_url }}">
+  {% endif %}
+  <meta property="og:site_name" content="GeneratorCV">
+  <meta property="og:locale" content="pt_BR">
+  {% if meta_image %}
+  <meta property="og:image" content="{{ meta_image }}">
+  {% endif %}
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ meta_title or title or "GeneratorCV" }}">
+  <meta name="twitter:description" content="{{ meta_description or "Gerador de curriculo em PDF para recrutadores." }}">
+  {% if meta_image %}
+  <meta name="twitter:image" content="{{ meta_image }}">
+  {% endif %}
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,6 +103,7 @@
       animation: rise 0.8s ease both;
     }
   </style>
+  {% block extra_head %}{% endblock %}
 </head>
 <body class="text-[var(--ink)]">
   <header class="px-6 pt-6">

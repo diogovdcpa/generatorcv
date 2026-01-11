@@ -12,15 +12,44 @@ from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
 
 app = Flask(__name__, static_folder="public", static_url_path="")
 
+SITE_NAME = "GeneratorCV"
+DEFAULT_DESCRIPTION = (
+    "GeneratorCV cria curriculos elegantes em PDF em poucos minutos. "
+    "Preencha seus dados, baixe o arquivo e compartilhe com recrutadores."
+)
+
+
+def _page_meta(page_title: str, description: str, path: str) -> dict[str, str]:
+    base_url = request.url_root.rstrip("/")
+    canonical = f"{base_url}{path}"
+    meta_title = f"{page_title} | {SITE_NAME}" if page_title else SITE_NAME
+    return {
+        "title": meta_title,
+        "meta_title": meta_title,
+        "meta_description": description,
+        "canonical_url": canonical,
+        "meta_image": f"{base_url}/favicon.ico",
+    }
+
 
 @app.get("/")
 def landing():
-    return render_template("index.html", title="GeneratorCV")
+    meta = _page_meta(
+        "Curriculos elegantes",
+        DEFAULT_DESCRIPTION,
+        "/",
+    )
+    return render_template("index.html", **meta)
 
 
 @app.get("/form")
 def form_page():
-    return render_template("form.html", title="Gerar curriculo | GeneratorCV")
+    meta = _page_meta(
+        "Gerar curriculo",
+        "Monte seu curriculo profissional com layout moderno e baixe o PDF.",
+        "/form",
+    )
+    return render_template("form.html", **meta)
 
 
 def slugify(value: str) -> str:
@@ -57,8 +86,8 @@ def build_pdf(data: dict[str, str]) -> BytesIO:
         rightMargin=48,
         topMargin=48,
         bottomMargin=48,
-        title="GeneratorCV",
-        author=data.get("full_name", "") or "GeneratorCV",
+        title=SITE_NAME,
+        author=data.get("full_name", "") or SITE_NAME,
     )
 
     styles = getSampleStyleSheet()
