@@ -15,12 +15,12 @@ app = Flask(__name__, static_folder="public", static_url_path="")
 
 @app.get("/")
 def landing():
-    return render_template("index.html", title="Curriculo Vivo")
+    return render_template("index.html", title="GeneratorCV")
 
 
 @app.get("/form")
 def form_page():
-    return render_template("form.html", title="Gerar curriculo")
+    return render_template("form.html", title="Gerar curriculo | GeneratorCV")
 
 
 def slugify(value: str) -> str:
@@ -57,8 +57,8 @@ def build_pdf(data: dict[str, str]) -> BytesIO:
         rightMargin=48,
         topMargin=48,
         bottomMargin=48,
-        title="Curriculo",
-        author=data.get("full_name", "") or "Curriculo Vivo",
+        title="GeneratorCV",
+        author=data.get("full_name", "") or "GeneratorCV",
     )
 
     styles = getSampleStyleSheet()

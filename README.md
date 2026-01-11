@@ -1,6 +1,6 @@
-# Curriculo Vivo ✨
+# GeneratorCV ✨
 
-Gerador de curriculo em Flask que cria um PDF elegante a partir de um formulario simples.
+GeneratorCV e um gerador de curriculo em Flask que cria um PDF elegante a partir de um formulario simples.
 O usuario comeca em uma landing page, segue para o formulario e faz o download do
 curriculo pronto em segundos. 🚀
 
