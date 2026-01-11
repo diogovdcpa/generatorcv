@@ -1,10 +1,10 @@
-# Curriculo Vivo
+# Curriculo Vivo ✨
 
 Gerador de curriculo em Flask que cria um PDF elegante a partir de um formulario simples.
 O usuario comeca em uma landing page, segue para o formulario e faz o download do
-curriculo pronto em segundos.
+curriculo pronto em segundos. 🚀
 
-## Destaques
+## Destaques 🌟
 
 - Landing page com apresentacao da aplicacao
 - Formulario completo para dados profissionais
@@ -12,20 +12,20 @@ curriculo pronto em segundos.
 - Templates Jinja + Tailwind via CDN
 - Pronto para deploy no Vercel
 
-## Stack
+## Stack 🧰
 
 - Flask
 - Jinja2
 - Tailwind CSS (CDN)
 - ReportLab para PDF
 
-## Rotas
+## Rotas 🔗
 
 - GET `/` landing page
 - GET `/form` formulario de curriculo
 - POST `/generate` gera e baixa o PDF
 
-## Rodar localmente
+## Rodar localmente 🧪
 
 ```bash
 python -m venv .venv
@@ -36,6 +36,6 @@ flask --app main run
 
 A aplicacao fica disponivel em `http://127.0.0.1:5000`.
 
-## Deploy
+## Deploy ☁️
 
 Deploy com Vercel usando a runtime Python. Basta conectar o repositorio e publicar.
